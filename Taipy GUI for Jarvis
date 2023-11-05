@@ -1,0 +1,82 @@
+from taipy import Config
+from taipy import Gui
+
+jarvis_transcript_string = '''
+User: Hi Jarvis, how is the weather in Lancaster?
+
+Jarvis: Hey, it is rainy and cold in Lancaster.
+
+User: What is a fun activity I can do this weekend?
+
+Jarvis: You should go to Durhack!
+''' #Initialisation will need to be dynamically updated
+volume_data_array = [1, 5, -6, 9 ,3, -7, 8 ,-9 ] #Example data
+volume_data = {
+    "Time": range(len(volume_data_array)),
+    "Volume": volume_data_array
+    }
+
+def update_graph_values(array_to_update):
+    for i in range(len(array_to_update)):
+        #array_to_update[i] = new value
+        break #remove this when complete
+        
+    return(array_to_update)     #Capture this output and use to update graph element
+
+page_to_draw = """
+
+#Jarvis the Web-based AI Voice **Assistant**
+
+
+
+##Created by James, Maxsym, Marta and David from Lancaster University
+
+
+Jarvis will listen to your questions and give you an answer.
+Below the microphone input signal can be viewed after your conversation.
+
+###Your Microphone Signal
+<|Microphone Signal|expandable|expanded=True|
+
+
+<|{volume_data}|chart|>
+|>
+
+
+###Jarvis-User Dialogue Transcript
+Once your conversation with Jarvis is complete you can view a transcript in the drop-down section below.
+<|Jarvis-User Transcript|expandable|expanded=True|
+User: Hi Jarvis, how is the weather in Lancaster?
+
+
+Jarvis: Hey, it is rainy and cold in Lancaster.
+
+
+User: What is a fun activity I can do this weekend?
+
+
+Jarvis: You should go to Durhack, it is great fun!
+
+
+
+
+
+
+
+
+|>
+"""
+
+Gui(page=page_to_draw).run(theme= {
+    "palette": {
+    "background": {"default": "#AF69EE"},
+    "primary": {"default": "#FFFFFF"}
+    }
+    })
+
+    
+
+    #Gui._broadcast()                #Use to alter variables
+
+
+
